@@ -1,0 +1,55 @@
+﻿@model PittmarkProject.Areas.Admin.Models.AdminViewModel
+@{
+    ViewBag.Title = "PersonalInformation";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+@section title{
+    Personal Information
+}
+<section class="content-header">
+    <h1>
+        Personal Information
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"> Personal Information</li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <div class="row" style="padding:20px;">
+        @using (Html.BeginForm("ChangePassword", "Home", FormMethod.Post))
+        {
+            @Html.ValidationSummary("", new { style = "font-weight:bold;color:red" })
+        <div class="form-group">
+          
+            @Html.Label("Name")
+            @Html.TextBoxFor(m => m.Name, new { name = "form-username", style = "font-weight:bold", placeholder = "Username...", @class = "form-username form-control font-weight-bold", id = "form-username", disabled = "true" })
+            @Html.HiddenFor(x => x.UserName)
+        </div>
+            <div class="form-group">
+                
+                @Html.Label("Username")
+                @Html.TextBoxFor(m => m.UserName, new { name = "form-username", style = "font-weight:bold", placeholder = "Username...", @class = "form-username form-control font-weight-bold", id = "form-username", disabled = "true" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("Old Password")             
+                @Html.PasswordFor(m => m.OldPassword, new { name = "form-password", style = "font-weight:bold", placeholder = "Password...", @class = "form-password form-control font-weight-bold", id = "form-password" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("New Password")               
+                @Html.PasswordFor(m => m.NewPassword, new { name = "form-password", style = "font-weight:bold", placeholder = "Password...", @class = "form-password form-control font-weight-bold", id = "form-password" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("Enter A New Password")              
+                @Html.PasswordFor(m => m.EnterNewPassword, new { name = "form-password", style = "font-weight:bold", placeholder = "Password...", @class = "form-password form-control font-weight-bold", id = "form-password" })
+
+            </div>
+            <button type="submit" class="btn">Change</button>
+        }
+    </div>
+</section>

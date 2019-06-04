@@ -1,0 +1,200 @@
+﻿@model PittmarkProject.Models.ProfileViewModel
+@{
+    ViewBag.Title = "ManageProfile";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+@section title{
+    User Profile
+}
+@section headerCss{
+
+    <link href="~/Areas/Admin/Assets/QuanTri/css/manageprofile.css" rel="stylesheet" />
+}
+@section footerJS{
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/profile.js"></script>
+    <script src="~/Areas/Admin/Assets/QuanTri/js/manageprofile.js"></script>
+}
+<section class="content-header">
+    <h1>
+        User Profile
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">User profile</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content" ng-app="pittmask.common">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+
+                    <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+                </ul>
+                <div class="tab-content" ng-controller="profile">
+
+
+                    <div class="tab-pane active" id="settings">
+                        <form class="form-horizontal container">
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label data-toggle="popover" data-trigger="hover" for="inputName" class="col-sm-2 control-label ">Logo image</label>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <input type="file" id="btn-logo" class="form-control" accept="image/*">
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <img style="width:100%" src="@Model.ImgLogo" id="img-logo" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label data-toggle="popover" data-trigger="hover" for="inputName" class="col-sm-2 control-label  ">Cover image</label>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <input type="file" id="btn-cover" class="form-control" accept="image/*">
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <img style="width:100%" src="@Model.ImgCover" id="img-cover" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="form-group" id="pnlEmail">
+                                <div class="row">
+                                    <label title="Thêm mới" data-toggle="popover" data-trigger="hover" for="inputName" class="col-sm-2 control-label btn btn-them-moi-thuoc-tinh">Email <i class="fa fa-plus-circle text-primary " style="font-size:20px;"></i></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputName" value="@Model.EmailList[0]">
+                                    </div>
+                                </div>
+                                @for (int i = 1; i < Model.EmailList.Count; i++)
+                                {
+
+                                    <div class="row mt-input ">
+                                        <div class="col-sm-2 btn-remove btn">
+                                            <i title="Xóa" data-toggle="popover" data-trigger="hover" class="fa fa-minus-circle text-danger " style="font-size:25px;float:right"></i>
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="@Model.EmailList[i]">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="form-group" id="pnlPhone">
+                                <div class="row">
+                                    <label title="Thêm mới" data-toggle="popover" data-trigger="hover" for="inputName" class="col-sm-2 control-label btn btn-them-moi-thuoc-tinh">Phone number <i class="fa fa-plus-circle text-primary " style="font-size:20px;"></i></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputName" value="@Model.PhoneNumberList[0]">
+                                    </div>
+                                </div>
+                                @for (int i = 1; i < Model.PhoneNumberList.Count; i++)
+                                {
+
+                                    <div class="row mt-input ">
+                                        <div class="col-sm-2 btn-remove btn">
+                                            <i title="Xóa" data-toggle="popover" data-trigger="hover" class="fa fa-minus-circle text-danger " style="font-size:25px;float:right"></i>
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="@Model.PhoneNumberList[i]">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group" id="pnlAddress">
+                                <div class="row">
+                                    <label title="Thêm mới" data-toggle="popover" data-trigger="hover" for="inputName" class="col-sm-2 control-label btn btn-them-moi-thuoc-tinh">Address <i class="fa fa-plus-circle text-primary " style="font-size:20px;"></i></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputName" value="@Model.AddressList[0]">
+                                    </div>
+                                </div>
+                                @for (int i = 1; i < Model.AddressList.Count; i++)
+                                {
+
+                                    <div class="row mt-input ">
+                                        <div class="col-sm-2 btn-remove btn">
+                                            <i title="Xóa" data-toggle="popover" data-trigger="hover" class="fa fa-minus-circle text-danger " style="font-size:25px;float:right"></i>
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="@Model.AddressList[i]">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group" id="pnlFacebook">
+                                <div class="row">
+                                    <label title="Thêm mới" data-toggle="popover" data-trigger="hover" for="inputName" class="col-sm-2 control-label btn btn-them-moi-thuoc-tinh">Facebook <i class="fa fa-plus-circle text-primary " style="font-size:20px;"></i></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputName" value="@Model.FaceBook[0]">
+                                    </div>
+                                </div>
+                                @for (int i = 1; i < Model.FaceBook.Count; i++)
+                                {
+
+                                    <div class="row mt-input ">
+                                        <div class="col-sm-2 btn-remove btn">
+                                            <i title="Xóa" data-toggle="popover" data-trigger="hover" class="fa fa-minus-circle text-danger " style="font-size:25px;float:right"></i>
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="@Model.FaceBook[i]">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" ng-click="updateProfile()" class="btn btn-danger">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+            </div><!-- /.nav-tabs-custom -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+</section><!-- /.content -->
+
+<div id="div-input-mau" style="display:none">
+    <div class="row mt-input ">
+        <div class="col-sm-2 btn-remove btn">
+            <i title="Xóa" data-toggle="popover" data-trigger="hover" class="fa fa-minus-circle text-danger " style="font-size:25px;float:right"></i>
+        </div>
+
+        <div class="col-sm-9">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+</div>

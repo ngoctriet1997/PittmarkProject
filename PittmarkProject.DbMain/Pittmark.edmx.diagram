@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01254d0bc43745299899142970c8efda" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="PittmarkStoreModel.Address" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Admin" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.DonHang" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Email" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Password" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.PhoneNumber" Width="1.5" PointX="5.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Profile" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.SanPham" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Status" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="PittmarkStoreModel.FK_DonHang_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="PittmarkStoreModel.FK_Password_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="PittmarkStoreModel.FK_DonHang_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PittmarkStoreModel.FK_DonHang_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="PittmarkStoreModel.FK_DonHang_Status" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Facebook" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.SanPhamTrungBay" Width="1.5" PointX="5.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

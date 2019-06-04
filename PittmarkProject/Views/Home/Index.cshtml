@@ -1,0 +1,688 @@
+﻿@model PittmarkProject.Models.ProfileViewModel
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en"	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Khẩu Trang Pitta Mask</title>
+    <link href="~/AssetsClient/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/AssetsClient/css/animate.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Assets/QuanTri/lib/toastr.min.css" rel="stylesheet" />
+
+    <script src="~/AssetsClient/js/jquery-3.3.1.min.js"></script>
+    <script src="~/AssetsClient/js/jquery.validate.min.js"></script>
+    <script src="~/AssetsClient/js/additional-methods.min.js"></script>
+    <script src="~/AssetsClient/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AssetsClient/js/bootstrap.min.js"></script>
+    <script src="~/AssetsClient/fontawesome-free-5.8.1-web/fontawesome-free-5.8.1-web/js/all.js"></script>
+    <script src="~/AssetsClient/js/wow.min.js"></script>
+
+
+    <script src="~/Areas/Admin/Assets/QuanTri/lib/angular.min.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+
+
+    <script src="~/Areas/Admin/Assets/QuanTri/lib/toastr.min.js"></script>
+    <script src="~/AssetsClient/app/common.js"></script>
+    <script src="~/AssetsClient/app/notificationService.js"></script>
+    <script src="~/AssetsClient/app/service.js"></script>
+    <script src="~/AssetsClient/app/clientScreen.js"></script>
+
+
+
+    <link rel="shortcut icon" href="~/AssetsClient/images/55959614_264453274503415_4339398101316927488_n.png" type="image/x-icon" />
+
+    <script src="~/AssetsClient/jsmyself/index.js"></script>
+    <link href="~/AssetsClient/cssmyself/index.css" rel="stylesheet" />
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '413024796128241');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=413024796128241&ev=PageView&noscript=1" />
+    </noscript>
+</head>
+                    <body ng-app="pittmask.common">
+                        <!-- 	begin menu -->
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top menu-main">
+                            <div class="container ">
+                                <div class="row">
+                                    <a class="navbar-brand mr-auto col-4 col-lg-2" href="#">
+                                        <img src="@Model.ImgLogo" style="width:100%;max-height:60px;" />
+                                    </a>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse  navbar-collapse " id="navbarSupportedContent">
+                                        <ul class="navbar-nav navbar-right ml-auto p-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#onhiem">Ô nhiễm bụi </a>
+                                            </li>
+                                            <li class="nav-item ">
+                                                <a class="nav-link" href="#giaiphap">Giải pháp</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#tinhnang">Tính năng</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#suvuottroi">Sự vượt trội</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sukhacbiet">Sự khác biệt</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#sanpham">Sản phẩm</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <div class="rounded">
+                                                    <a class="btn btn-myself btn-scroll-ban-hang text-white">
+                                                        <span style="padding-right: 5px;border-right: 1px solid white;margin-right: 2px "><i class="fas fa-cart-plus"></i></span><span>Đặt hàng ngay</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- ket thuc menu -->
+                        <!-- bat dau bia  -->
+                        <div class="w-100 wow bounce" id="onhiem">
+                            <a class="w-100  btn-scroll-ban-hang"><img class="w-100" style="width:100%" src="@Model.ImgCover" /><a />
+                        </div>
+                        <!-- ket thuc bia -->
+                        <!-- o nhiem khoi bui -->
+                        <div class="container mt-5">
+                            <div class="row">
+                                <div class="col-lg-6 wow slideInLeft">
+                                    <p class="text-left">
+                                        <b>Ô nhiễm không khí – sát thủ tàn phá cơ thể nhanh nhất</b>
+                                    </p>
+                                    <p class="text-left">
+
+                                        Lượng bụi PM2.5 trung bình năm tại Hà Nội lên tới 50,5µg/m3, cao gấp đôi soi với quy chuẩn quốc gia (25 µg/m3) và gấp năm lần so với ngưỡng trung bình năm theo hướng dẫn khuyến nghị của tổ chức Y tế thế giới –WHO (10µg/m3).
+                                    </p>
+                                    <p class="text-left">
+                                        Ô nhiễm không khí là hỗn hợp của rất nhiều chất gây bệnh, bao gồm khí thải của các nhà máy công nghiệp, của các xe trên đường, bụi không khí…Những loại khói bụi này có gần 100 chất có thể gây ra rất nhiều căn bệnh liên quan đến hô hấp hoặc ung thư
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 wow slideInRight ">
+
+                                    <img class="btn-scroll-ban-hang" style="width:100%" src="~/AssetsClient/images/o-nhiem-khong-khi-2.jpg" />
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ket thuc o nhiem khoi bui -->
+                        <!-- giai phap -->
+                        <div class="bg-xam " id="giaiphap">
+                            <div class="container">
+                                <div class="row">
+                                    <img src="~/AssetsClient/images/khau-trang-pitta-mask-5-min.png" class="col-lg-8 m-auto h-100  btn-scroll-ban-hang" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ket thuc giai phap -->
+                        <!-- tinh nang -->
+                        <div class="container mt-5" id="tinhnang">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img class=" btn-scroll-ban-hang" src="~/AssetsClient/images/khau-trang-pittamask-33-min.jpg" style="width:100%" />
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <h2 class="text-left text-primary">
+                                        Khẩu trang Pitta – Chống Bụi Chuyên Nghiệp
+                                    </h2>
+                                    <b class="text-left ">
+                                        Ngăn chặn hiệu quả khói bụi đến 99%
+                                    </b>
+                                    <p class="text-left">
+                                        Cấu trúc lọc đa lớp mật độ cao giúp sản phẩm ngăn chặn khói bụi, cho hiệu quả lọc là cực kỳ cao. Theo báo cáo, khẩu trang có thể ngăn được các hạt lẫn trong không khí với kích thước từ 10µm đến tận 2.5µm, các loại vi khuẩn, mầm bệnh có hại trong không khí.
+                                    </p>
+                                    <p class="text-left">
+                                        Mặc dù có cơ chế màn lọc hiệu năng cao, nhưng <b> khẩu trang PITTA Mask </b>vẫn đảm bảo được độ thông thoáng cần thiết. Không gây cảm giác bí bách, nóng hoặc thiếu Oxy, ảnh hưởng trực tiếp đến việc hô hấp của người dùng. Kết hợp với vật liệu êm ái, thân thiện với làn da, nên sản phẩm cho cảm giác sử dụng vô cùng dễ chịu dù cho bạn có đeo nó trong thời gian dài.
+                                    </p>
+                                    <p class="text-left">
+                                        Khẩu trang Pitta Mask được bầu chọn vào “Top 100 sản phẩm có thiết kế tốt nhất – Good Design Award 2014 BEST 100″
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- ket thuc tinh nang -->
+                        <!-- DAT HANG -->
+                        <div class="w-100 dat-hang bg-dark">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4>Bộ 03 khẩu trang Pitta mask </h4>
+                                        <br />
+                                        Giải pháp tối ưu đến từ Nhật Bản, Ngăn chặn khói bụi hiệu quả đến
+                                        <b class="text-danger" style="font-size: 29px;">
+                                            99%
+                                        </b>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <a class="btn btn-myself  btn-scroll-ban-hang">Đặt hàng ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- KET THUC DAT HANG -->
+                        <div class="w-100" id="suvuottroi"></div>
+                        <!-- SU VUOT TROI -->
+                        <div class="w-100 bg-xam">
+                            <div class="container">
+                                <div class="row"></div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <img class="w-100  btn-scroll-ban-hang" src="~/AssetsClient/images/khau-trang-nhat-pittamask-4-min.jpg" />
+
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row icon-blue">
+                                            <div class="col-lg-2   mt-2 text-white">
+                                                <div class="div-icon rounded-circle">
+
+                                                    <i class="fas fa-users icon-vuot-troi"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <h4 class="text-left text-primary text-justify">
+                                                    Ngăn chặn khói bụi 99 %
+                                                </h4>
+                                                <p class="text-left text-vuot-troi">
+                                                    Cấu trúc màng lưới 3D độc đáo nên có khả năng kháng bụi tới 99%.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="row icon-blue">
+                                            <div class="col-lg-2   mt-2 text-white">
+                                                <div class="div-icon rounded-circle">
+
+                                                    <i class="fas fa-check-circle icon-vuot-troi"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <h4 class="text-left text-primary text-justify">
+                                                    Thoáng khí - không đọng hơi sương trên kính
+                                                </h4>
+                                                <p class="text-left text-vuot-troi">
+                                                    Khả năng ôm gọn khuôn mặt của bạn một cách hài hoà. Độ thoáng khí cao đặc biệt không hấp hơi làm mờ mắt kính.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="row icon-blue">
+                                            <div class="col-lg-2   mt-2 text-white">
+                                                <div class="div-icon rounded-circle">
+
+                                                    <i class="fas fa-check-square icon-vuot-troi"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-10	 ">
+                                                <h4 class="text-left text-primary text-justify">
+
+                                                    Thoải mái giao tiếp, không lem son môi
+
+                                                </h4>
+                                                <p class="text-left text-vuot-troi">
+                                                    Với cấu trúc đặc thù, khẩu trang  cho bạn thoải mái giao tiếp, đồng thời giúp phái đẹp giữ son môi không bị phai lem vào khẩu trang.
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--  HET SU VUOT TROI -->
+                        <!-- THIET KE -->
+                        <div class="w-100 bg-xam" style="clear:both">
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="row icon-blue">
+                                            <div class="col-lg-2   mt-2 text-white">
+                                                <div class="div-icon rounded-circle">
+
+                                                    <i class="fas fa-smile icon-vuot-troi "></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <h4 class="text-left text-primary text-justify">
+
+
+                                                    Thiết kế tinh tế - thời trang
+
+                                                </h4>
+                                                <p class="text-left text-vuot-troi">
+                                                    Không chỉ bảo vệ mà nó còn là một sản phẩm thời trang được rất nhiều người sử dụng
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="row icon-blue">
+                                            <div class="col-lg-2   mt-2 text-white">
+                                                <div class="div-icon rounded-circle ">
+
+                                                    <i class="fas fa-check-double icon-vuot-troi "></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-10	 ">
+                                                <h4 class="text-left text-primary text-justify">
+
+
+                                                    Tiết kiệm tối đa
+
+
+                                                </h4>
+                                                <p class="text-left text-vuot-troi">
+                                                    Được thiết kế đặc biệt nên các bạn có thể giặt và tái sử dụng thoải mái.
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                        <div class="row icon-blue">
+                                            <div class="col-lg-2   mt-2 text-white">
+                                                <div class="div-icon rounded-circle ">
+
+                                                    <i class="fas fa-bell icon-vuot-troi"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-10	 ">
+                                                <h4 class="text-left text-primary text-justify">
+                                                    Vừa vặn và thoải mái
+
+
+                                                </h4>
+                                                <p class="text-left text-vuot-troi">
+                                                    Được thiết kế độc đáo, ôm gọn khuôn mặt của bạn một cách hài hoà
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img class="w-100  btn-scroll-ban-hang" src="~/AssetsClient/images/khau-trang-nhat-pittamask-3-min.jpg" />
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- KET THUC THIET KE -->
+                        <!-- SU KHAC BIET -->
+                        <div class="w-100 bg-xam " id="sukhacbiet">
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <img class="w-100  btn-scroll-ban-hang" src="~/AssetsClient/images/khau-trang-pitta-mask-6-min.png" />
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h2 class="text-left text-primary font-weight-bold">
+                                            Điểm khác biệt so với khẩu trang Thường
+                                        </h2>
+                                        <p class="text-left text-primary font-weight-bold">
+                                            Bảo vệ đến 99% khói bụi
+                                        </p>
+                                        <p class="text-left">
+
+                                            Làm bằng chất liệu Polyurethane có công dụng kháng vi khuẩn. Với cấu trúc màng lưới 3D độc đáo nhắm kháng bụi tới 99%.
+                                        </p>
+                                        <p class="text-left text-primary font-weight-bold">
+                                            Thời trang
+                                        </p>
+                                        <p class="text-left">
+                                            Không chỉ bảo vệ mà nó còn là một sản phẩm thời trang được rất nhiều người ưa chuộng. Là sản phẩm đẹp, cá tính dành cho dân phượt.
+                                        </p>
+                                        <p class="text-left text-primary font-weight-bold">
+                                            Quai đeo co giãn
+                                        </p>
+                                        <p class="text-left">
+                                            Quai đeo với chất liệu co giãn và mềm mại, không gây cảm giác đau hay khó chịu trong quá trình sử dụng. Khả năng ôm gọn khuôn mặt của bạn một cách hài hoà.
+                                        </p>
+                                        <p class="text-left text-primary font-weight-bold">
+                                            Thoải mái giao tiếp, không lem son môi
+                                        </p>
+                                        <p class="text-left">
+                                            Với cấu trúc đặc thù, khẩu trang  cho bạn thoải mái giao tiếp, đồng thời giúp phái đẹp giữ son môi không bị phai lem vào khẩu trang.
+                                        </p>
+                                        <p class="text-left text-primary font-weight-bold">
+                                            Hướng dẫn sử dụng
+                                        </p>
+                                        <p class="text-left">
+                                            Mở rộng khẩu trang, lần lượt đeo hai quai vào vành tai rồi điều chỉnh lại cho vừa vặn.
+                                        </p>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- HET SU KHAC BIET -->
+                        <!-- BO 3 KHAU TRANG -->
+                        <div class="W-100 mt-5 bg-dark text-white p-5">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <h1>Bộ 03 Khẩu trang chống bụi pitta mask</h1>
+
+                                        <a class="btn btn-myself text-white  btn-scroll-ban-hang">Đặt hàng ngay</a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <img src="~/AssetsClient/images/khau-trang-pitta-thong-minh-min.png" class="w-100" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- HET BO 3 KHAU TRANG -->
+                        <!--San pham-->
+                        <div class="container mt-5" id="sanpham">
+                            <div class="row  ">
+                                <div class="col-lg-12 text-center text-primary" style="font-size: 30px
+                                        ;border-bottom: 3px solid blue">
+                                    Danh sách sản phẩm
+                                </div>
+
+                            </div>
+
+                            <div class="row text-center mt-3">
+                                <div class="col-lg-6">
+                                    @for (int i = 0; i < Model.DisplayProductList.Count / 2; i++)
+                                    {
+                                        <div class="card">
+                                            <div class="card-header text-primary" style="font-weight:700">
+                                                @Model.DisplayProductList[i].Name
+                                            </div>
+                                            <div class="card-body">
+                                                <img class="card-img-bottom" src=" @Model.DisplayProductList[i].Image" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+
+                                </div>
+                                <div class="col-lg-6">
+                                    @for (int i = Model.DisplayProductList.Count / 2; i < Model.DisplayProductList.Count; i++)
+                                    {
+                                        <div class="card">
+                                            <div class="card-header text-primary" style="font-weight:700">
+                                                @Model.DisplayProductList[i].Name
+                                            </div>
+                                            <div class="card-body">
+                                                <img class="card-img-bottom" src=" @Model.DisplayProductList[i].Image" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Het San pham-->
+                        <!-- DAT HANG NGAY -->
+                        <div class="W-100 mt-5" id="dathangngay" ng-controller="order">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <img src="~/AssetsClient/images/gia-khau-trnag-pitta-2-mau.jpg" class="w-100" />
+
+                                    </div>
+                                    <div class="col-lg-6  wow slideInUp">
+                                        <form id="frmOrder">
+                                            <div class="form-group">
+
+                                                <input required type="text" class="form-control" id="exampleInputEmail1" ng-model="CustomerName" aria-describedby="emailHelp" placeholder="Nhập họ và tên">
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input required type="number" maxlength="15" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="NumberPhone" placeholder="Nhập số điện thoại">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="Address" placeholder="Địa chỉ nhập hàng">
+                                            </div>
+                                            <label>Số lượng: Ưu đãi hơn khi đặt từ 2 sản phẩm</label>
+                                            <br />
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        @for (int i = 0; i < Model.ProductList.Count / 2; i++)
+                                                        {
+                                                            <div class="form-check form-check-inline">
+                                                                <input required name="product" ng-model="IdProduct" class="form-check-input" type="radio" id="inlineCheckbox1" value="@Model.ProductList[i].Id">
+                                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                                    @Model.ProductList[i].Name:
+                                                                    @(Model.ProductList[i].Price / 1000)k- @Model.ProductList[i].Descript
+                                                                </label>
+                                                            </div>
+                                                            <br />
+                                                        }
+
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        @for (int i = Model.ProductList.Count / 2; i < Model.ProductList.Count; i++)
+                                                        {
+                                                            <div class="form-check form-check-inline">
+                                                                <input required name="product" ng-model="IdProduct" class="form-check-input" type="radio" id="inlineCheckbox1" value="@Model.ProductList[i].Id">
+                                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                                    @Model.ProductList[i].Name:
+                                                                    @(Model.ProductList[i].Price / 1000)k - @Model.ProductList[i].Descript
+                                                                </label>
+
+                                                            </div>
+                                                            <br />
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <textarea class="form-control" ng-model="Descript" id="exampleFormControlTextarea1" rows="3"
+                                                          placeholder="Ghi chú"></textarea>
+                                            </div>
+
+                                            <button  data-toggle="modal" data-target="#myModal" class="btn btn-myself" style="width: 150px">Đặt hàng</button>
+                                         
+                                            <!-- The Modal -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header" style="color: white;
+    background-color: #3c8dbc;">
+
+                                                            <h4 class="modal-title">Đơn hàng</h4>
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Bạn có chắc chắn mua hàng
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button ng-click="" type="button" class="btn btn-danger" data-dismiss="modal">Đồng ý</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- HET DAT HANG NGAY -->
+                        <!-- Binh luan cua khach hang -->
+                        <div class="container mt-5">
+                            <div class="row  ">
+                                <div class="col-lg-12 text-center text-primary" style="font-size: 30px
+                                        ;border-bottom: 3px solid blue">
+                                    Bình luận của khách
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+
+                                    <img src="~/AssetsClient/images/56472459_449738275770403_6357075678579392512_n.jpg" class="w-100" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <img src="~/AssetsClient/images/khau-trang-chong-bui-min.jpg" class="w-100" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ket thuc binh luan cua khach hang -->
+                        <!-- command footer -->
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-lg-4 wow slideInUp tien-ich" style="margin:0 auto">
+                                    <div class="card w-100 border-white">
+                                        <div class="card-img-top divtop">
+                                            <i class="fontawesome-icon  fa fa-home thei"></i>
+                                        </div>
+                                        <div class="card-body text-center text-primary">
+                                            <h5 class="card-title">Giao hàng thu tiền tại nhà</h5>
+                                            <p class="card-text">Giao hàng tại nhà toàn quốc</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 wow slideInUp tien-ich">
+                                    <div class="card text-center w-100 border-white">
+                                        <div class="card-img-top divtop">
+                                            <i class="fontawesome-icon  fa fa-archive thei"></i>
+                                        </div>
+                                        <div class="card-body text-center text-primary">
+                                            <h5 class="card-title">Miễn phí giao hàng</h5>
+                                            <p class="card-text">Với đơn hàng từ 300.000</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 wow slideInUp tien-ich">
+                                    <div class="card w-100 border-white">
+                                        <div class="card-img-top divtop">
+                                            <i class="fontawesome-icon  fa fa-undo thei"></i>
+                                        </div>
+                                        <div class="card-body text-center text-primary">
+                                            <h5 class="card-title">Đổi Trả Hàng Trong 7 Ngày</h5>
+                                            <p class="card-text">Hoàn tiền 100%</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ket thuc command footer -->
+                        <!--  bat dau footer -->
+                        <div class="w-100" style="height:30px;background-color: #2b2e32">
+
+                        </div>
+                        <!-- footer -->
+                        <div class="w-100" style="background-color: #1c1e21;">
+                            <div class="container ">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center text-white">
+
+                                        <div class="row p-3">
+                                            <div class="col-lg-3 border-right border-white">
+                                                @foreach (var item in Model.EmailList)
+                                                {
+                                                    <i class="fas fa-envelope"></i> @item;
+                                                    <br />
+                                                }
+
+                                            </div>
+                                            <div class="col-lg-3 border-right border-white">
+                                                @foreach (var item in Model.PhoneNumberList)
+                                                {
+                                                    <i class="fas fa-phone"></i> @item
+                                                    <br />
+                                                }
+
+
+                                            </div>
+                                            <div class="col-lg-3 border-right border-white">
+                                                @foreach (var item in Model.AddressList)
+                                                {
+                                                    <i class="fas fa-map-marker-alt"></i> @item
+                                                    <br />
+                                                }
+
+
+                                            </div>
+                                            <div class="col-lg-3">
+                                                @foreach (var item in Model.FaceBook)
+                                                {
+                                                    <i class="fab fa-facebook-f"></i>@item
+                                                    <br />
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ket thuc footer -->
+                        <a  class="animated infinite shake" target="_blank" title="liên hệ" href="https://www.facebook.com/threemaskvietnam/" id="btn-truc-tuyen" style="right:50px;">
+                            <div class="btn btn-primary rounded-circle" style="width:80px;"><i class="fab fa-facebook-messenger" style="font-size: 30px"></i>Liên hệ</div>
+                        </a>
+
+
+
+
+                       
+
+                    </body>
+                                        </html>

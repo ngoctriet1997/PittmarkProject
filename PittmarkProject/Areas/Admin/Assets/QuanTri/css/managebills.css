@@ -1,0 +1,26 @@
+﻿#pnlCbk
+{
+    position:relative;
+}
+#btnXoa {
+    position: absolute;
+    width: 100px;
+    top: 30px;
+    left: -41px;
+    box-shadow: 0 0 5px 1px #8e7979;
+    display:none;
+}
+#pnlSearch{
+    float:right;
+}
+#txtSearch{
+    width:250px;
+}
+tbody tr:hover {
+    background-color: #bbdbfb;
+    cursor:pointer;
+}
+input.form-control,select.form-control
+{
+    border-radius:7px;
+}

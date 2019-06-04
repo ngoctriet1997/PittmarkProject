@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "ManageProduct";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+@section headerCss{
+
+    <link href="~/Areas/Admin/Assets/QuanTri/css/managebills.css" rel="stylesheet" />
+
+}
+@section title{
+    Manage Display Product
+}
+@section footerJS{
+
+
+    <!-- SlimScroll -->
+    <script src="~/Areas/Admin/Assets/QuanTri/js/jquery.slimscroll.min.js"></script>
+
+
+
+
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/common.js"></script>
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/notificationService.js"></script>
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/service.js"></script>
+
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/manageDisplayProduct.js"></script>
+
+    <script>
+
+    </script>
+
+
+    <script src="~/Areas/Admin/Assets/QuanTri/js/managebills.js"></script>
+    <script src="~/Areas/Admin/Assets/QuanTri/js/managedisplayproduct.js"></script>
+}
+<div ng-app="pittmask.common" ng-controller="manageDisplayProduct">
+
+
+    <section class="content-header">
+        <h1>
+            Manage displat products
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">
+                Manage displat products
+            </li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="box">
+                    <div class="box-header">
+
+                        <div class=" btn btn-primary " style="float:right" ng-click="Add()" data-toggle="modal" data-target="#myModal">
+                            Thêm
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class=" btn-group" id="pnlCbk">
+                                            <div ng-click="addOrRemoveList()" class="btn btn-default" id="cbkAll" data-check='false'>
+                                                <i class="fa fa-square-o fa-lg" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="btn btn-default" id="btnAll">
+                                                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                                <div class="btn btn-danger" id="btnXoa" ng-click="deleteById()">
+                                                    Xóa
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-repeat="product in Products">
+
+
+                                    <td>
+                                        <div data-id="{{product.id}}" ng-click="addOrRemoveIdList(product.id)" class="btn btn-default cbkItem" data-check="false">
+                                            <i ng-class="{'fa fa-square-o fa-lg': product.Delete == false , 'fa fa-check-square-o fa-lg': product.Delete == true}" class="" aria-hidden="true"></i>
+                                        </div>
+                                    </td>
+
+                                    <td ng-click="getById( product.id )" data-toggle="modal" data-target="#myModal">
+
+                                        {{product.Name}}
+                                    </td>
+                                    <td><img src="{{product.Image}}" style="width:100%"/></td>
+                                 
+
+                                </tr>
+
+
+
+                            </tbody>
+
+
+
+                        </table>
+
+
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+
+        </div><!-- /.row -->
+
+    </section><!-- /.content -->
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="color: white;
+    background-color: #3c8dbc;">
+
+                    <h4 class="modal-title">Sản phẩm</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Product name:</label>
+                            <div class="col-sm-10">
+                                <input ng-model="Product.Name" type="text" class="form-control" id="email" placeholder="Tên sản phẩm">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Choose image</label>
+                            <div class="col-sm-10">
+                                <input type="file" id="btn-logo" class="form-control" accept="image/*">
+
+                            </div>
+                            <label class="control-label col-sm-2" for="email"> image</label>
+                            <div class="col-sm-10">
+                                <img style="width:100%" src="" id="img-logo" />
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10 ">
+                                <button type="submit" class="btn btn-default" ng-click="update()">Save</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

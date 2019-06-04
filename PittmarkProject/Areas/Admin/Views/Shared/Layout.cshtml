@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        @RenderSection("title", required: true)
+    </title>
+
+    @RenderSection("headerCss", required: false)
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link href="~/Areas/Admin/Assets/QuanTri/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Theme style -->
+    <link href="~/Areas/Admin/Assets/QuanTri/css/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+    <link href="~/Areas/Admin/Assets/QuanTri/css/_all-skins.min.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/Assets/QuanTri/lib/toastr.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        @{ Html.RenderAction("Header", "Home");}
+        <!-- Left side column. contains the logo and sidebar -->
+        @{ Html.RenderAction("SlideBar", "Home");}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            @RenderBody()
+
+        </div><!-- /.content-wrapper -->
+
+        @{ Html.RenderAction("Footer", "Home");}
+
+        <!-- Control Sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+    <!-- jQuery 2.1.4 -->
+    <script type="text/javascript" src="~/Areas/Admin/Assets/QuanTri/js/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="~/Areas/Admin/Assets/QuanTri/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Areas/Admin/Assets/QuanTri/js/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Areas/Admin/Assets/QuanTri/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Areas/Admin/Assets/QuanTri/js/demo.js"></script>
+
+    <script src="~/Areas/Admin/Assets/QuanTri/lib/angular.min.js"></script>
+
+    <script src="~/Areas/Admin/Assets/QuanTri/lib/toastr.min.js"></script>
+
+
+
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/common.js"></script>
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/notificationService.js"></script>
+
+    <script src="~/Areas/Admin/Assets/QuanTri/manageprofile/service.js"></script>
+
+   
+    @RenderSection("footerJS", required: false)
+</body>
+</html>

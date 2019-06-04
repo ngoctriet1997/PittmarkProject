@@ -1,0 +1,79 @@
+html{
+	scroll-behavior: smooth;
+}
+p{
+	color:#3c3939;
+}
+.div-icon{
+	    width: 50px;
+    background: #007bff;
+    text-align: center;
+    height: 50px;
+    color:white;
+}
+ .icon-vuot-troi{
+    font-size: 28px;
+    margin-top: 10px;
+}
+.text-vuot-troi{
+	color:gray;
+}
+.bg-xam{
+	background-color: #f2f2f3;
+	padding-top: 10px;
+}
+.dat-hang{
+	padding:15px;
+	color:white;
+}
+.thei{
+	color: rgb(53, 186, 242);
+	margin-top: 15px;
+	width: 55px !important;
+	height: 55px;
+}
+.divtop{
+	border: 1px solid rgb(53, 186, 242);
+	border-radius:50% 50%;
+	height: 88px;
+	width: 88px;
+	text-align: center;
+	margin:auto;
+}
+.menu-main li a{
+	font-weight: 600;
+}
+.btn-myself{
+	background-color: #2196F3;
+	color:white;
+}
+.btn-myself:hover{
+	background-color: #0069d9;
+	color:white;
+}
+.icon-blue:hover .div-icon{
+	transform: scale(1.5);
+	
+}
+.tien-ich:hover .divtop{
+ animation: roll 1s infinite;
+
+}
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+#btn-truc-tuyen {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    bottom: 50px;
+}
+.btn-scroll-ban-hang{
+    cursor:pointer;
+}
