@@ -96,6 +96,9 @@
     <Compile Include="Email.cs">
       <DependentUpon>Pittmark.tt</DependentUpon>
     </Compile>
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>Pittmark.tt</DependentUpon>
+    </Compile>
     <Compile Include="Facebook.cs">
       <DependentUpon>Pittmark.tt</DependentUpon>
     </Compile>
@@ -124,6 +127,9 @@
       <DependentUpon>Pittmark.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>Pittmark.tt</DependentUpon>
+    </Compile>
     <Compile Include="SanPham.cs">
       <DependentUpon>Pittmark.tt</DependentUpon>
     </Compile>

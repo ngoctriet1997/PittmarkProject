@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+using Pittmark.Common;
 using Pittmark.Dao;
 using PittmarkProject.DbMain;
 using PittmarkProject.Models;
@@ -28,6 +30,14 @@ namespace PittmarkProject.Hubs
         }
         public int SendBillToAdmin(BillViewModel billViewModel)
         {
+          
+            if (CheckUserInput.IsDangerousString(billViewModel.Address) || CheckUserInput.IsDangerousString(billViewModel.CustomerName) ||
+                CheckUserInput.IsDangerousString(billViewModel.Descript) || CheckUserInput.IsDangerousString(billViewModel.NumberPhone) ||
+                billViewModel.Address.Length>256 || billViewModel.Descript.Length>256 || billViewModel.CustomerName.Length > 100 )
+            {
+                Clients.Caller.SendStatus("false");
+                return 0;
+            }
             DonHang donHang = new DonHang();
             try
             {
@@ -62,6 +72,8 @@ namespace PittmarkProject.Hubs
             }
             catch (Exception e)
             {
+                DaoErrorLog daoErrorLog = new DaoErrorLog();
+                daoErrorLog.Add(MethodBase.GetCurrentMethod().Name, "", "");
                 Clients.Caller.SendStatus("false");
                 return 0;
             }

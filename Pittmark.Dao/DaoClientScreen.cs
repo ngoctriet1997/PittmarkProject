@@ -55,6 +55,10 @@ namespace Pittmark.Dao
         {
             var result = _daoCustomer.DonHangs.Add(donHang);
             _daoCustomer.SaveChanges();
+
+            //PittamaskProject.DbMain.Backup.PittmarkStoreEntities pittmarkStoreEntities = new PittamaskProject.DbMain.Backup.PittmarkStoreEntities();
+            //pittmarkStoreEntities.DonHangs.Add(new PittamaskProject.DbMain.Backup.DonHang() { })
+
             return result;
         }
         public SanPham GetProductById(int? id)

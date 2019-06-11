@@ -82,6 +82,8 @@
                 getAll();
                 notificationService.displaySuccess('Lưu thành công');
             }, function (error) {
+                console.log(error);
+              
                 notificationService.displayError('Lưu thất bại');
 
             });

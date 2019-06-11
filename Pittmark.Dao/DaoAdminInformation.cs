@@ -1,4 +1,5 @@
-﻿using PittmarkProject.DbMain;
+﻿
+using PittmarkProject.DbMain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,10 @@ namespace Pittmark.Dao
                 var ad = DaoAdmin.Admins.Where(x => x.Username == userName).Single();
                 ad.Passwords.ToList().ForEach(x => { x.Status = "0"; });
                 DaoAdmin.SaveChanges();
-                var passwordAdmin = DaoAdmin.Passwords.Add(new Password() { Id_admin = ad.Id, Insert_YMD = DateTime.Now, Password1 = newPassword, Status = "1" });
-                DaoAdmin.SaveChanges();
+
+                var pw = new Password() { Id_admin = ad.Id, Insert_YMD = DateTime.Now, Password1 = newPassword, Status = "1" };
+                var passwordAdmin = DaoAdmin.Passwords.Add(pw);
+                DaoAdmin.SaveChanges();           
                 return true;
             }
             catch

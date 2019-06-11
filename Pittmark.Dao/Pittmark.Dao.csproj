@@ -80,6 +80,7 @@
     <Compile Include="DaoClientScreen.cs" />
     <Compile Include="DaoCustomer.cs" />
     <Compile Include="DaoDisplayProduct.cs" />
+    <Compile Include="DaoErrorLog.cs" />
     <Compile Include="DaoLogin.cs" />
     <Compile Include="DaoManageBill.cs" />
     <Compile Include="DaoProduct.cs" />
@@ -94,7 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

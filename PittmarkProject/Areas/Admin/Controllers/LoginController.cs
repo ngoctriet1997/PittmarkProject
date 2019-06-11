@@ -3,6 +3,7 @@ using PittmarkProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -41,30 +42,41 @@ namespace PittmarkProject.Areas.Admin.Controllers
         }
         //
         [HttpPost]
+       //[ValidateInput(false)]
         public ActionResult Login(UserLogin userLogin)
         {
-            if (ModelState.IsValid)
+            try
             {
-                DaoLogin daoLogin = new DaoLogin();
-                if (daoLogin.CheckLogin(userLogin.UserName, userLogin.Password))
+                if (ModelState.IsValid)
                 {
-                    Session[Pittmark.Common.Constraints.User_Login] = userLogin;
-                    Session.Timeout = 10000;
-                    if (userLogin.SavePassWork)
+                    DaoLogin daoLogin = new DaoLogin();
+                    if (daoLogin.CheckLogin(userLogin.UserName, userLogin.Password))
                     {
-                        HttpCookie userInfo = new HttpCookie(Pittmark.Common.Constraints.User_Login);
-                        userInfo["username"] = userLogin.UserName;
-                        userInfo["password"] = userLogin.Password;
-                        Response.Cookies.Add(userInfo);
+                        Session[Pittmark.Common.Constraints.User_Login] = userLogin;
+                        Session.Timeout = 10000;
+
+                        if (userLogin.SavePassWork)
+                        {
+                            HttpCookie userInfo = new HttpCookie(Pittmark.Common.Constraints.User_Login);
+                            userInfo["username"] = userLogin.UserName;
+                            userInfo["password"] = userLogin.Password;
+                            Response.Cookies.Add(userInfo);
+                        }
+
+                        return RedirectToAction("ManageProfile", "Home");
                     }
+                    ModelState.AddModelError("", "Tài khoản và mật khẩu không hợp lệ");
 
-                    return RedirectToAction("ManageProfile", "Home");
                 }
-                ModelState.AddModelError("", "Tài khoản và mật khẩu không hợp lệ");
 
+                return View("Index");
             }
-
-            return View("Index");
+            catch (Exception e)
+            {
+                DaoErrorLog daoErrorLog = new DaoErrorLog();
+                daoErrorLog.Add(MethodBase.GetCurrentMethod().Name, this.GetType().Name, e.Message);
+                return null;
+            }
         }
     }
 }

@@ -12,26 +12,18 @@ namespace PittmarkProject.DbMain
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Admin()
+        public Role()
         {
-            this.DonHangs = new HashSet<DonHang>();
-            this.Passwords = new HashSet<Password>();
+            this.Admins = new HashSet<Admin>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public string Id_change_password { get; set; }
-        public string IsOnline { get; set; }
-        public Nullable<int> Role { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonHang> DonHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Password> Passwords { get; set; }
-        public virtual Role Role1 { get; set; }
+        public virtual ICollection<Admin> Admins { get; set; }
     }
 }

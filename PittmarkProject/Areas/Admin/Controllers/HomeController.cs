@@ -4,6 +4,7 @@ using PittmarkProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -84,37 +85,55 @@ namespace PittmarkProject.Areas.Admin.Controllers
         }
         public ViewResult ChangePassword(AdminViewModel adminViewModel)
         {
-            DaoLogin daoLogin = new DaoLogin();
-            if (daoLogin.CheckLogin(adminViewModel.UserName,adminViewModel.OldPassword))
+            try
             {
-                if(adminViewModel.NewPassword == adminViewModel.EnterNewPassword && !string.IsNullOrEmpty(adminViewModel.EnterNewPassword) )
+                DaoLogin daoLogin = new DaoLogin();
+                if (daoLogin.CheckLogin(adminViewModel.UserName, adminViewModel.OldPassword))
                 {
-                    DaoAdminInformation daoAdmin = new DaoAdminInformation();
-                    if(daoAdmin.ChangePassword(adminViewModel.UserName, adminViewModel.NewPassword))
+                    if (adminViewModel.NewPassword == adminViewModel.EnterNewPassword && !string.IsNullOrEmpty(adminViewModel.EnterNewPassword))
                     {
-                     
+                        DaoAdminInformation daoAdmin = new DaoAdminInformation();
+                        if (daoAdmin.ChangePassword(adminViewModel.UserName, adminViewModel.NewPassword))
+                        {
+
+                            return View("PersonalInformation");
+                        }
+                        ModelState.AddModelError("", "Thay đổi không thành công");
                         return View("PersonalInformation");
                     }
-                    ModelState.AddModelError("", "Thay đổi không thành công");
+                    ModelState.AddModelError("", "Mật khẩu không trùng nhau");
                     return View("PersonalInformation");
                 }
-                ModelState.AddModelError("", "Mật khẩu không trùng nhau");
-                return View("PersonalInformation");
+                else
+                {
+                    ModelState.AddModelError("", "Mật khẩu cũ không đúng");
+                    return View("PersonalInformation");
+                }
             }
-            else
+            catch (Exception e)
             {
-                ModelState.AddModelError("", "Mật khẩu cũ không đúng");
-                return View("PersonalInformation");
-            }                 
+                DaoErrorLog daoErrorLog = new DaoErrorLog();
+                daoErrorLog.Add(MethodBase.GetCurrentMethod().Name, this.GetType().Name, e.Message);
+                return null;
+            }
         }
         public ActionResult LogOut()
         {
-            Session[Pittmark.Common.Constraints.User_Login] = null;
-            HttpCookie userInfo = new HttpCookie(Pittmark.Common.Constraints.User_Login);
-            userInfo["username"] = "";
-            userInfo["password"] = "";
-            Response.Cookies.Add(userInfo);
-            return RedirectToAction("Index", "Login");
+            try
+            {
+                Session[Pittmark.Common.Constraints.User_Login] = null;
+                HttpCookie userInfo = new HttpCookie(Pittmark.Common.Constraints.User_Login);
+                userInfo["username"] = "";
+                userInfo["password"] = "";
+                Response.Cookies.Add(userInfo);
+                return RedirectToAction("Index", "Login");
+            }
+            catch (Exception e)
+            {
+                DaoErrorLog daoErrorLog = new DaoErrorLog();
+                daoErrorLog.Add(MethodBase.GetCurrentMethod().Name, this.GetType().Name, e.Message);
+                return null;
+            }
         }
     }
 }

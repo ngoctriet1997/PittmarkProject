@@ -20,6 +20,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="Id_change_password" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
           <Property Name="IsOnline" Type="nchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Customer">
@@ -53,6 +54,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Method" Type="varchar" MaxLength="150" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Note" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="Facebook">
           <Key>
             <PropertyRef Name="Id" />
@@ -85,6 +95,13 @@
           <Property Name="Img_logo" Type="varchar(max)" Nullable="false" />
           <Property Name="Img_cover" Type="varchar(max)" />
           <Property Name="Img_avatar" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -122,6 +139,18 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_Admin_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DonHang_Admin">
           <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
@@ -188,14 +217,20 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Facebook" EntityType="Self.Facebook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Password" EntityType="Self.Password" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhoneNumber" EntityType="Self.PhoneNumber" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPhamTrungBay" EntityType="Self.SanPhamTrungBay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admin_Roles" Association="Self.FK_Admin_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
           <AssociationSet Name="FK_DonHang_Admin" Association="Self.FK_DonHang_Admin">
             <End Role="Admin" EntitySet="Admin" />
             <End Role="DonHang" EntitySet="DonHang" />
@@ -239,6 +274,8 @@
           <NavigationProperty Name="DonHangs" Relationship="Self.FK_DonHang_Admin" FromRole="Admin" ToRole="DonHang" />
           <NavigationProperty Name="Passwords" Relationship="Self.FK_Password_Admin" FromRole="Admin" ToRole="Password" />
           <Property Name="IsOnline" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Role1" Relationship="PittmarkStoreModel.FK_Admin_Roles" FromRole="Admin" ToRole="Role" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -426,6 +463,12 @@
           </AssociationSet>
           <EntitySet Name="Facebooks" EntityType="PittmarkStoreModel.Facebook" />
           <EntitySet Name="SanPhamTrungBays" EntityType="PittmarkStoreModel.SanPhamTrungBay" />
+          <EntitySet Name="Roles" EntityType="PittmarkStoreModel.Role" />
+          <AssociationSet Name="FK_Admin_Roles" Association="PittmarkStoreModel.FK_Admin_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <EntitySet Name="ErrorLogs" EntityType="PittmarkStoreModel.ErrorLog" />
         </EntityContainer>
         <EntityType Name="Facebook">
           <Key>
@@ -442,6 +485,35 @@
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Delete_YMD" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admins" Relationship="PittmarkStoreModel.FK_Admin_Roles" FromRole="Role" ToRole="Admin" />
+        </EntityType>
+        <Association Name="FK_Admin_Roles">
+          <End Type="PittmarkStoreModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="PittmarkStoreModel.Admin" Role="Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Method" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -460,6 +532,7 @@
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="PittmarkStoreModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -575,6 +648,24 @@
                 <ScalarProperty Name="Delete_YMD" ColumnName="Delete_YMD" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="PittmarkStoreModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="PittmarkStoreModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

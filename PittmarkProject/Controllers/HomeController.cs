@@ -13,6 +13,7 @@ namespace PittmarkProject.Controllers
         private DaoClientScreen _daoClientScreen;
         public HomeController()
         {
+         
             _daoClientScreen = new DaoClientScreen();
         }
         public ActionResult Index()

@@ -11,7 +11,9 @@
             del: del
         }
         function del(url, data, success, failure) {
-        
+            var username = localStorage.username;
+            var password = localStorage.password;
+            $http.defaults.headers.common.Authorization = 'Basic ' + username + ":" + password;
             $http.delete(url, data).then(function (result) {
                 success(result);
             }, function (error) {
@@ -26,7 +28,9 @@
             });
         }
         function post(url, data, success, failure) {
-          
+            var username = localStorage.username;
+            var password = localStorage.password;
+            $http.defaults.headers.common.Authorization = 'Basic ' + username + ":" + password;
             $http.post(url, data).then(function (result) {
                 success(result);
             }, function (error) {
@@ -41,7 +45,9 @@
             });
         }
         function put(url, data, success, failure) {
-          
+            var username = localStorage.username;
+            var password = localStorage.password;
+            $http.defaults.headers.common.Authorization = 'Basic ' + username + ":" + password;
             $http.put(url, data).then(function (result) {
                 success(result);
             }, function (error) {
@@ -56,7 +62,9 @@
             });
         }
         function get(url, params, success, failure) {
-        
+            var username = localStorage.username;
+            var password = localStorage.password;
+            $http.defaults.headers.common.Authorization = 'Basic ' + username + ":" + password;
             $http.get(url, params).then(function (result) {
                 success(result);
             }, function (error) {

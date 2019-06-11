@@ -9,7 +9,6 @@
 
 namespace PittmarkProject.DbMain
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -20,8 +19,7 @@ namespace PittmarkProject.DbMain
             : base("name=PittmarkStoreEntities")
         {
         }
-      
-      
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -40,5 +38,7 @@ namespace PittmarkProject.DbMain
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Facebook> Facebooks { get; set; }
         public virtual DbSet<SanPhamTrungBay> SanPhamTrungBays { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
     }
 }

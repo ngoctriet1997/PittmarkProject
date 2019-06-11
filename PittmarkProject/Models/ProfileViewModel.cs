@@ -1,6 +1,7 @@
 ﻿using PittmarkProject.DbMain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,9 @@ namespace PittmarkProject.Models
 {
     public class ProfileViewModel
     {
+        [MaxLength(length: 200000)]
         public string ImgLogo { get; set; }
+        [MaxLength(length: 200000)]
         public string ImgCover { get; set; }
         public List<string> EmailList { get; set; }
         public List<string> PhoneNumberList { get; set; }

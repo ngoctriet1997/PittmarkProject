@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Web.Http;
 
 namespace PittmarkProject.Api
@@ -47,6 +48,8 @@ namespace PittmarkProject.Api
             }
             catch (Exception e)
             {
+                DaoErrorLog daoErrorLog = new DaoErrorLog();
+                daoErrorLog.Add(MethodBase.GetCurrentMethod().Name, "", e.Message);
                 return request.CreateResponse(HttpStatusCode.NotImplemented);
             }
 

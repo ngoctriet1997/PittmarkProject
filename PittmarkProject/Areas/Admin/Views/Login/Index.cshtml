@@ -53,36 +53,38 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            
+
                             @using (Html.BeginForm("Login", "Login", FormMethod.Post))
                             {
                                 @Html.ValidationSummary("", new { style = "font-weight:bold;color:red" })
                                 <div class="form-group">
                                     <label class="sr-only" for="form-username">Username</label>
-                                    @Html.TextBoxFor(m => m.UserName,new { name = "form-username",style="font-weight:bold", placeholder = "Username..." , @class= "form-username form-control font-weight-bold", id="form-username" })
-                                   
+                                    @Html.TextBoxFor(m => m.UserName, new { name = "form-username", style = "font-weight:bold", placeholder = "Username...", @class = "form-username form-control font-weight-bold", id = "form-username" })
+
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Password</label>
-                                    @Html.PasswordFor(m=>m.Password, new { name = "form-password", style = "font-weight:bold", placeholder = "Password...", @class= "form-password form-control font-weight-bold", id="form-password"})
-                                 
+                                    @Html.PasswordFor(m => m.Password, new { name = "form-password", style = "font-weight:bold", placeholder = "Password...", @class = "form-password form-control font-weight-bold", id = "form-password" })
+
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                    @Html.CheckBoxFor(m=>m.SavePassWork)
-                                  
-                                    Remember me</label>
+                                        @Html.CheckBoxFor(m => m.SavePassWork)
+
+                                        Remember me
+                                    </label>
                                 </div>
-                                <button type="submit" class="btn">Sign in!</button>
+                                <button type="submit" id="submitForm" class="btn">Sign in!</button>
+                                <button type="button" style="display:none">Sign in!</button>
                             }
-                         
+
                         </div>
                     </div>
                 </div>
               
             </div>
         </div>
-
+        
     </div>
 
     <!-- Javascript -->
@@ -90,7 +92,12 @@
     <script src="~/Areas/Admin/Assets/DangNhap/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Areas/Admin/Assets/DangNhap/assets/js/jquery.backstretch.min.js"></script>
     <script src="~/Areas/Admin/Assets/DangNhap/assets/js/scripts.js"></script>
-
+    <script>
+        $('#submitForm').click(function () {
+            window.localStorage.username = $("#form-username").val();
+            window.localStorage.password = $("#form-password").val();
+        })
+    </script>
     <!--[if lt IE 10]>
         <script src="assets/js/placeholder.js"></script>
     <![endif]-->

@@ -196,6 +196,8 @@
     <Compile Include="Areas\Admin\Api\ProductController.cs" />
     <Compile Include="Areas\Admin\Api\ProfileController.cs" />
     <Compile Include="Areas\Admin\Api\TestController.cs" />
+    <Compile Include="Areas\Admin\Authentication\ApiAuthenticationFilter.cs" />
+    <Compile Include="Areas\Admin\Authentication\ApiAuthSaler.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
@@ -205,7 +207,6 @@
     <Compile Include="Areas\Admin\Models\ProductViewModel.cs" />
     <Compile Include="Areas\Infrastructure\PaginationSet.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DaoLogin.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1983,6 +1984,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\ActionFilter\" />
     <Folder Include="Areas\Admin\Assets\App\" />
     <Folder Include="Areas\Admin\Views\Base\" />
   </ItemGroup>

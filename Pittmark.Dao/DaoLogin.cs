@@ -30,5 +30,14 @@ namespace Pittmark.Dao
                 return false;
             }
         }
+        public int? GetRole(string userName,string password)
+        {
+            var mk = DaoAdmin.Admins.Where(x => x.Username == userName).Single().Passwords.Where(x => x.Status == "1").Single();
+            if (DaoAdmin.Admins.Count(x => x.Username == userName) > 0 && mk.Password1 == password)
+            {
+                return mk.Admin.Role;
+            }
+            return -1;
+        }
     }
 }

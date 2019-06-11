@@ -23,6 +23,9 @@
         <AssociationConnector Association="PittmarkStoreModel.FK_DonHang_Status" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PittmarkStoreModel.Facebook" Width="1.5" PointX="8.375" PointY="7.75" />
         <EntityTypeShape EntityType="PittmarkStoreModel.SanPhamTrungBay" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.Role" Width="1.5" PointX="0.75" PointY="12.875" />
+        <AssociationConnector Association="PittmarkStoreModel.FK_Admin_Roles" />
+        <EntityTypeShape EntityType="PittmarkStoreModel.ErrorLog" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -44,6 +44,7 @@
             $scope.Bill.NumberPhone = $scope.NumberPhone;
             $scope.Bill.Address = $scope.Address;
             $scope.Bill.Status = 0;
+            console.log('Hello')
 
 
             if ( $scope.Bill.IdProduct == 0 || $scope.Bill.CustomerName == ""
